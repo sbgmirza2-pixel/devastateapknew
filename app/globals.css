@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+:root {
+  --font-anton: var(--font-heading), var(--font-roboto), sans-serif;
+  --font-bodoni: var(--font-heading), var(--font-roboto), sans-serif;
+  --page-gutter: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+@keyframes toc-highlight-glow {
+  0% {
+    transform: scale(0.96) translateX(-4px);
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.6rem;
+  }
+  25% {
+    transform: scale(1.04) translateX(4px);
+    background: rgba(0, 0, 0, 0.18);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.6rem;
+  }
+  50% {
+    transform: scale(1.01) translateX(0);
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.6rem;
+  }
+  100% {
+    transform: scale(1) translateX(0);
+    background: transparent;
+    padding: 0;
+  }
+}
+
+@keyframes toc-section-glow {
+  0% {
+    outline: 3px solid rgba(0, 0, 0, 0.25);
+    outline-offset: 4px;
+    border-radius: 1rem;
+  }
+  50% {
+    outline: 3px solid rgba(0, 0, 0, 0.12);
+    outline-offset: 8px;
+    border-radius: 1rem;
+  }
+  100% {
+    outline: 3px solid transparent;
+    outline-offset: 12px;
+  }
+}
+
+.toc-highlight-pulse {
+  animation: toc-highlight-glow 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  display: inline-block;
+}
+
+.toc-section-pulse {
+  animation: toc-section-glow 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+:target {
+  scroll-margin-top: 7rem;
+}
+
+:target h2 {
+  animation: toc-highlight-glow 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: inline-block;
+}
+
+body {
+  background-color: #E2E6DF; 
+  color: #1F2937;
+  font-family: var(--font-roboto), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.95rem; 
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), var(--font-roboto), sans-serif;
+  letter-spacing: 0.03em;
+  color: #0f172a;
+  wordspacing: 0.05em;
+}
+
+h1 {
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+h2 {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h3 {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+/* Keep the private admin UI light without changing the public site palette. */
+.admin-light {
+  background-color: #ffffff !important;
+  color: #111827;
+}
+
+.input-dark {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #111827;
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.input-dark:focus {
+  outline: 2px solid #94a3b8;
+  outline-offset: 1px;
+}
+
+.admin-light [class*="bg-[#0f0f0f]"],
+.admin-light [class*="bg-[#151515]"],
+.admin-light [class*="bg-[#1a1a1a]"],
+.admin-light [class*="bg-black/"] {
+  background-color: #ffffff !important;
+}
+
+.admin-light [class*="bg-white/"] {
+  background-color: #f8fafc !important;
+}
+
+.admin-light [class*="text-white"] {
+  color: #111827 !important;
+}
+
+.admin-light [class*="border-white"] {
+  border-color: #e2e8f0 !important;
+}
+
+.admin-light [class*="placeholder-white"]::placeholder {
+  color: #94a3b8 !important;
+}
+
+.admin-light [class*="hover:bg-white"]:hover {
+  background-color: #f1f5f9 !important;
+}
+
+.admin-light [class*="hover:border-white"]:hover {
+  border-color: #cbd5e1 !important;
+}
+
+.admin-light [class*="focus:bg-white"]:focus {
+  background-color: #ffffff !important;
+}
+
+.admin-light [class*="focus:border-white"]:focus {
+  border-color: #94a3b8 !important;
+}
+
+.admin-light button {
+  cursor: pointer;
+}
+
+.admin-light button:not([class*="bg-"]):not([class*="p-1"]):not([class*="p-2"]):not([class*="py-1"]):not([class*="py-2"]) {
+  background: #111827;
+  border: 1px solid #111827;
+  border-radius: 0.75rem;
+  color: #ffffff !important;
+  padding: 0.625rem 1rem;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.admin-light button:not([class*="bg-"]):not([class*="p-1"]):not([class*="p-2"]):not([class*="py-1"]):not([class*="py-2"]):hover {
+  background: #263244;
+  border-color: #263244;
+  box-shadow: 0 4px 12px rgb(15 23 42 / 18%);
+  transform: translateY(-1px);
+}
+
+.admin-light button:not([class*="bg-"]):not([class*="p-1"]):not([class*="p-2"]):not([class*="py-1"]):not([class*="py-2"]):active {
+  transform: translateY(0);
+}
+
+.admin-light button:disabled {
+  cursor: not-allowed;
+  transform: none;
+}
